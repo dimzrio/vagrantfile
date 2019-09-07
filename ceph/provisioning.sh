@@ -19,6 +19,7 @@ fetch_directory: ~/ceph-ansible-keys
 public_network: 192.168.56.0/24
 monitor_address: 0.0.0.0
 monitor_interface: eth1
+dashboard_enabled: False
 cluster_network: "{{ public_network | regex_replace(' ', '') }}"
 EOF
 
