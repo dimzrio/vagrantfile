@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo yum -y install epel-release
 sudo yum -y groupinstall "Development Tools"
-sudo cat << EOF > ~/.ssh/config
+sudo cat << EOF > /home/vagrant/.ssh/config
 Host node1
     Hostname node1.dimzrio.com
     User vagrant
