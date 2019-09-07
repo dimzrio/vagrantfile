@@ -2,7 +2,7 @@
 sudo yum -y install epel-release centos-release-ceph-nautilus centos-release-openstack-stein sshpass
 sudo yum -y install ceph-ansible
 sudo cp /usr/share/ceph-ansible/group_vars/all.yml.sample /usr/share/ceph-ansible/group_vars/all.yml
-ssh-keygen -q -t rsa -f /home/vagrant/.ssh/id_rsa -N ''
+yes | ssh-keygen -q -t rsa -f /home/vagrant/.ssh/id_rsa -N ''
 sudo chown vagrant. /home/vagrant/.ssh/id_*
 sudo chmod 400 /home/vagrant/.ssh/id_*
 sshpass -p vagrant ssh-copy-id -o StrictHostKeyChecking=no vagrant@192.168.56.101
