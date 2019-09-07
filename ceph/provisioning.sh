@@ -18,6 +18,7 @@ ceph_stable_release: nautilus
 fetch_directory: ~/ceph-ansible-keys
 public_network: 192.168.56.0/24
 monitor_address: 0.0.0.0
+monitor_interface: eth1
 cluster_network: "{{ public_network | regex_replace(' ', '') }}"
 EOF
 
@@ -39,6 +40,8 @@ ansible_become_user=root
 # set Monitor Daemon Node
 [mons]
 node1
+node2
+node3
 
 # set Manager Daemon Node
 [mgrs]
@@ -51,3 +54,5 @@ node2
 node3
 
 EOF
+
+sudo cp /usr/share/ceph-ansible/site.yml.sample /usr/share/ceph-ansible/site.yml
