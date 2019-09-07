@@ -1,11 +1,14 @@
 #!/bin/bash
-sudo yum -y install epel-release centos-release-ceph-nautilus centos-release-openstack-stein 
+sudo yum -y install epel-release centos-release-ceph-nautilus centos-release-openstack-stein sshpass
 sudo yum -y install ceph-ansible
 sudo cp /usr/share/ceph-ansible/group_vars/all.yml.sample /usr/share/ceph-ansible/group_vars/all.yml
 ssh-keygen -q -t rsa -f /home/vagrant/.ssh/id_rsa -N ''
-sudo sed -i -e 's/#PubkeyAuthentication/PubkeyAuthentication/g' /etc/ssh/sshd_config
-sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-sudo systemctl restart sshd
+sudo chown vagrant. /home/vagrant/.ssh/id_*
+sudo chmod 400 /home/vagrant/.ssh/id_*
+sudo sshpass -p vagrant ssh-copy-id -o StrictHostKeyChecking=no vagrant@192.168.56.101
+sudo sshpass -p vagrant ssh-copy-id -o StrictHostKeyChecking=no vagrant@192.168.56.102
+sudo sshpass -p vagrant ssh-copy-id -o StrictHostKeyChecking=no vagrant@192.168.56.103
+
 sudo cat << EOF >> /usr/share/ceph-ansible/group_vars/all.yml
 # Configuration
 ceph_origin: repository
