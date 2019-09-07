@@ -12,3 +12,9 @@ Host node3
     Hostname node3.dimzrio.com
     User vagrant
 EOF
+
+sudo cat << EOF >> /etc/hosts
+192.168.56.101 node1.dimzrio.com node1
+192.168.56.102 node2.dimzrio.com node2
+192.168.56.103 node3.dimzrio.com node3
+EOF

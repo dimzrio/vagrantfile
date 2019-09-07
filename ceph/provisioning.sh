@@ -2,6 +2,10 @@
 sudo yum -y install epel-release centos-release-ceph-nautilus centos-release-openstack-stein 
 sudo yum -y install ceph-ansible
 sudo cp /usr/share/ceph-ansible/group_vars/all.yml.sample /usr/share/ceph-ansible/group_vars/all.yml
+ssh-keygen -q -t rsa -f ~/.ssh/id_rsa -N '' > /dev/null
+sudo sed -i -e 's/#PubkeyAuthentication/PubkeyAuthentication/g' /etc/ssh/sshd_config
+sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+sudo systemctl restart sshd
 sudo cat << EOF >> /usr/share/ceph-ansible/group_vars/all.yml
 # Configuration
 ceph_origin: repository
