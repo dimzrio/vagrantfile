@@ -5,9 +5,9 @@ sudo cp /usr/share/ceph-ansible/group_vars/all.yml.sample /usr/share/ceph-ansibl
 yes | ssh-keygen -q -t rsa -f /home/vagrant/.ssh/id_rsa -N ''
 sudo chown vagrant. /home/vagrant/.ssh/id_*
 sudo chmod 400 /home/vagrant/.ssh/id_*
-sshpass -p vagrant ssh-copy-id -o StrictHostKeyChecking=no vagrant@192.168.56.101
-sshpass -p vagrant ssh-copy-id -o StrictHostKeyChecking=no vagrant@192.168.56.102
-sshpass -p vagrant ssh-copy-id -o StrictHostKeyChecking=no vagrant@192.168.56.103
+sudo -i vagrant sshpass -p vagrant ssh-copy-id -o StrictHostKeyChecking=no vagrant@192.168.56.101
+sudo -i vagrant sshpass -p vagrant ssh-copy-id -o StrictHostKeyChecking=no vagrant@192.168.56.102
+sudo -i vagrant sshpass -p vagrant ssh-copy-id -o StrictHostKeyChecking=no vagrant@192.168.56.103
 
 sudo cat << EOF >> /usr/share/ceph-ansible/group_vars/all.yml
 # Configuration
