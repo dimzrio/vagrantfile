@@ -1,6 +1,11 @@
 #!/bin/bash
-sudo yum -y install epel-release
+sudo yum -y install epel-release ntp ntpdate ntp-doc
 sudo yum -y groupinstall "Development Tools"
+
+ntpdate 0.id.pool.ntp.org
+hwclock --systohc
+systemctl enable ntpd.service
+systemctl start ntpd.service
 
 sudo sed -i -e 's/#PubkeyAuthentication/PubkeyAuthentication/g' /etc/ssh/sshd_config
 sudo sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
