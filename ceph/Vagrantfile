@@ -56,8 +56,8 @@ Vagrant.configure("2") do |config|
           vbox.memory = 1024
           vbox.cpus = 2
     end
-    subconfig.vm.provision "shell", path: "https://gitlab.com/dimzrio/vagrant/raw/master/ceph/provisioning.sh"
+    subconfig.vm.provision "shell", path: "https://raw.githubusercontent.com/dimzrio/vagrantfile/master/ceph/provisioning.sh"
   end
 
-  config.vm.provision "shell", path: "https://gitlab.com/dimzrio/vagrant/raw/master/ceph/update.sh"
+  config.vm.provision "shell", path: "https://raw.githubusercontent.com/dimzrio/vagrantfile/master/ceph/update.sh"
 end
