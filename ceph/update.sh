@@ -2,6 +2,7 @@
 sudo yum -y install epel-release ntp ntpdate ntp-doc
 sudo yum -y groupinstall "Development Tools"
 
+sudo cp /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 ntpdate 0.id.pool.ntp.org
 hwclock --systohc
 systemctl enable ntpd.service
