@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
 
-  NodeCount = 3
+  NodeCount = 6
   (1..NodeCount).each do |i|
    config.vm.define "node#{i}" do |cfg|
      cfg.vm.hostname = "node#{i}.dimzrio.com"
@@ -9,11 +9,12 @@ Vagrant.configure("2") do |config|
    
      cfg.vm.provider "virtualbox" do |vbox|
         vbox.gui = false
-        vbox.memory = "1024"
+        vbox.memory = "512"
         vbox.name = "node#{i}"
      end
      cfg.vm.provision "shell", inline: <<-SHELL
-	yum -y install ntp ntpdate ntp-doc
+	yum -y install ntp ntpdate ntp-doc nano wget
+	yum groups install "Development Tools"
 	sudo cp /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 	ntpdate 0.id.pool.ntp.org
 	hwclock --systohc
